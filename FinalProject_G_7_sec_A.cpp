@@ -1,4 +1,3 @@
-Yene Class, [04/11/2024 19:45]
 #include <iostream>
 #include <vector>
 #include <string>
