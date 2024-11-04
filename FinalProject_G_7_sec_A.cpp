@@ -1,3 +1,4 @@
+Yene Class, [04/11/2024 19:45]
 #include <iostream>
 #include <vector>
 #include <string>
@@ -26,11 +27,16 @@ public:
 // Function to display products
 void displayProducts(const vector<Product>& products) {
     for (const auto& product : products) {
-        cout << "Name: " << product.name << ", Price: " << product.price
-             << ", Rating: " << product.rating << ", Stock: " << product.stock
-             << ", Discount: " << product.discount << "%, Reviews: " << product.reviews
-             << ", Brand: " << product.brand << ", Weight: " << product.weight
-             << ", Category: " << product.category << ", Sales: " << product.sales << endl;
+        cout<<endl<<"Name:.........." << product.name <<endl;
+        cout<<"   - Price:.........$" << product.price<<endl;
+        cout<<"   - Rating:........" << product.rating <<endl;
+        cout<<"   - Stock:........." << product.stock<<endl;
+        cout<<"   - Discount:......" << product.discount<<"%"<<endl;
+        cout<<"   - Reviews:......." << product.reviews<<endl;
+        cout<<"   - Brand:........." << product.brand <<endl;
+        cout<<"   - Weight:........" << product.weight<<"g"<<endl;
+        cout<<"   - Category:......" << product.category <<endl;
+        cout<<"   - Sales:........." << product.sales<< endl;
     }
 }
 
@@ -57,11 +63,11 @@ void heapify(vector<Product>& products, int n, int i) {
 
 void heapSortByDiscountPercentage(vector<Product>& products) {
     int n = products.size();
-    
+
     // Build heap (rearrange array)
     for (int i = n / 2 - 1; i >= 0; i--)
         heapify(products, n, i);
-    
+
     // One by one extract an element from heap
     for (int i = n - 1; i > 0; i--) {
         swap(products[0], products[i]); // Move current root to end
@@ -73,7 +79,7 @@ void heapSortByDiscountPercentage(vector<Product>& products) {
 vector<Product> getProductsFromUser() {
     vector<Product> products;
     int numProducts;
-    
+
     cout << "Enter the number of products: ";
     cin >> numProducts;
 
@@ -108,22 +114,24 @@ vector<Product> getProductsFromUser() {
         cin >> sales;
         products.emplace_back(name, price, rating, stock, discount, time(0), reviews, brand, weight, category, sales);
     }
-    
+
     return products;
 }
+
 
 // Menu to sort and display products by different criteria
 void sortAndDisplayMenu(vector<Product>& products) {
     int choice;
-    
-    cout << "nChoose a sorting criterion:n"<<endl;
+
+Yene Class, [04/11/2024 19:45]
+cout << "nChoose a sorting criterion:n"<<endl;
     cout << "1. Price (Bubble Sort)n"<<endl;
-    cout << "2. Rating (Selection Sort)n"<<end;
+    cout << "2. Rating (Selection Sort)n"<<endl;
     cout << "3. Name (Quick Sort)n"<<endl;
-    cout << "4. Stock Quantity (Merge Sort)n"<<end;
+    cout << "4. Stock Quantity (Merge Sort)n"<<endl;
     cout << "5. Discount Percentage (Heap Sort)n"<<endl;
     cout << "Enter your choice: "<<endl;
-    
+
     cin >> choice;
 
     switch (choice) {
@@ -151,13 +159,13 @@ void sortAndDisplayMenu(vector<Product>& products) {
             cout << "Invalid choice.n";
             return;
     }
-    
+
     displayProducts(products);
 }
 
 int main() {
     vector<Product> products = getProductsFromUser();
     sortAndDisplayMenu(products);
-    
+
     return 0;
 }
